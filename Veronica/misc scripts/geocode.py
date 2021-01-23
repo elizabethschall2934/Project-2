@@ -18,6 +18,9 @@ addresses = []
 # Dictionary that will hold a list of unique addresses and their corresponding lat/longs
 location_lookup_table = {}
 
+# List of datasets containing address info to be merged
+datasets = ["Bird_data.json", "cats_data.json", "dog_data.json", "Fish_data.json", "Horse_data.json", "Rabbit_data.json", "small_data.json"]
+
 # Function to read in all json files and compile all of their addresses into a single list of unique addresses
 def addAddresses(dataset):
     with open(dataset, "r", encoding = "utf8") as f_in:
@@ -45,11 +48,6 @@ def geocode(addresses):
         except Exception as e:
             print(e)
             print("Geocoding failure for address " + address)
-    
-       
-
-# List of datasets containing address info to be merged
-datasets = ["Bird_data.json", "cats_data.json", "dog_data.json", "Fish_data.json", "Horse_data.json", "Rabbit_data.json", "small_data.json"]
 
 # Pass each dataset through addAddresses function to build list of unique addresses
 for dataset in datasets:

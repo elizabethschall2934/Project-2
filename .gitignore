@@ -2,13 +2,13 @@
 /Veronica/config.py
 
 # Large files needed for testing
-/Veronica/Bird_data.json
-/Veronica/cats_data.json
-/Veronica/dog_data.json
-/Veronica/Fish_data.json
-/Veronica/Horse_data.json
-/Veronica/Rabbit_data.json
-/Veronica/small_data.json
+/Veronica/data/Bird_data.json
+/Veronica/data/cats_data.json
+/Veronica/data/dog_data.json
+/Veronica/data/Fish_data.json
+/Veronica/data/Horse_data.json
+/Veronica/data/Rabbit_data.json
+/Veronica/data/small_data.json
 
 # Byte-compiled / optimized / DLL files
 api_keys.py
