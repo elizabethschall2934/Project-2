@@ -5,7 +5,7 @@ from bson import json_util, ObjectId
 
 app = Flask(__name__)
 
-# Use flask_pymongo to set up mongo connection
+#Use flask_pymongo to set up mongo connection
 #app.config["MONGO_URI"] = "mongodb://localhost:27017/pet_db"
 app.config["MONGO_URI"] = "mongodb+srv://TeamCatViz:RockingTeam#1@cluster0.jityt.mongodb.net/pet_db?retryWrites=true&w=majority"
 mongo = PyMongo(app)
