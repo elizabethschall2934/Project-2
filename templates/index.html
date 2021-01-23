@@ -15,15 +15,27 @@
 
     <div class="jumbotron text-center">
       <h1>Mission to Find Pet</h1>
-      <p><a class="btn btn-primary btn-lg" href="/getData" role="button">Get Pet Data</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/getPetData" role="button">Get Pet Data</a></p>
     </div>
-    <div id="map"></div>
+    <div id="map">
+      <h3>All Location Data</h3>
+        <table id="table_loc" class="display">
+          <thead>
+            <th>street</th>
+            <th>city</th>
+            <th>state</th>
+            <th>lnglat</th>
+          </thead>
+          <tbody>
+          </tbody>
+        </table> 
+    </div>
 
     <!-- Displaying Pets Data -->
     <div class="row" id="pet-mission">
       <div class="col-md-12">
         <h3>All Pet Data</h3>
-        <table id="table_id" class="display">
+        <table id="table_data" class="display">
           <thead>
             <th>id</th>
             <th>Type</th>
@@ -48,7 +60,7 @@
   <script src="{{ url_for('static', filename='data.js') }}" charset="utf-8"></script>
   <script type="text/javascript">
     data = displayData({{pets_data|tojson}})
-    map = createMap({{pets_data|tojson}})
+    map = createMap({{locs_data|tojson}})
   </script>
 </body>
 </html>

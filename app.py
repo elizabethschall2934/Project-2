@@ -14,7 +14,21 @@ mongo = PyMongo(app)
 def index():
     pets_coll = mongo.db.pet_data.find()
     pets_json = json.loads(json_util.dumps(pets_coll))
-    return render_template("index.html", pets_data=pets_json)
+    loc_coll = mongo.db.location_data.find()
+    loc_json = json.loads(json_util.dumps(loc_coll))
+    return render_template("index.html", pets_data=pets_json, locs_data=loc_json)
+
+@app.route("/getPetData")
+def getPetData():
+    pets_coll = mongo.db.pet_data.find()
+    pets_json = json.loads(json_util.dumps(pets_coll))
+    return pets_json
+
+@app.route("/getLocationData")
+def getLocationData():
+    loc_coll = mongo.db.location_data.find()
+    loc_json = json.loads(json_util.dumps(loc_coll))
+    return loc_json
 
 if __name__ == "__main__":
     app.run(debug=True)
