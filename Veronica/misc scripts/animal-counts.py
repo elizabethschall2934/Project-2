@@ -10,11 +10,11 @@ typeCounts = {}
 def addTypes(dataset):
     with open(dataset, "r", encoding = "utf8") as f_in:
         df = pd.read_json(f_in)
-        typeCounts_gb = df.groupby(["species"]).count().sort_values(by=["id"], ascending = False)
+        typeCounts_gb = df.groupby(["type"]).count().sort_values(by=["id"], ascending = False)
         print(typeCounts_gb.head(10))
     
 # List of datasets containing address info to be merged
-datasets = ["Bird_data.json", "cats_data.json", "dog_data.json", "Fish_data.json", "Horse_data.json", "Rabbit_data.json", "small_data.json"]
+datasets = ["../data/Bird_data.json", "../data/cats_data.json", "../data/dog_data.json", "../data/Fish_data.json", "../data/Horse_data.json", "../data/Rabbit_data.json", "../data/small_data.json"]
 
 # Pass each dataset through addAddresses function to build list of unique addresses
 for dataset in datasets:
