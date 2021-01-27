@@ -1,4 +1,6 @@
-d3.json("cats_data.json", function(data) {
+console.log("Found sunburst.js")
+d3.json("/getPetData").then(function(data) {
+  console.log("Starts d3.json")
   var types = data.map(x => x.type)
   var breeds = data.map(x =>x.breeds.primary)
   var species = data.map(x => x.species);
