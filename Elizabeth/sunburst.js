@@ -1,12 +1,25 @@
 d3.json("horse_data.json").then(function(data) {
-  // var types = data.map(x => x.type)
-  // var breeds = data.map(x =>x.breeds.primary)
+  var types = data.map(x => x.type)
+  var breeds = data.map(x =>x.breeds.primary)
   var species = data.map(x => x.species);
-  // var colors = data.map(x => x.colors.primary);
-  // var age = data.map(x => x.age);
-  // var gender = data.map(x => x.gender);
+  var colors = data.map(x => x.colors.primary);
+  var age = data.map(x => x.age);
+  var gender = data.map(x => x.gender);
 
-  console.log(data);
+  console.log(gender);
+
+  var newArray = [...new Set(data.map(({gender}) => gender))];
+
+  console.log(newArray);
+
+  var newArray2 = [...new Set(data.map(({type}) => type))];
+
+  console.log(newArray2);
+
+  var newArray3 = [...new Set(data.map(({species}) => species))];
+  newArray3.shift(); 
+
+  console.log(newArray3);
 
   // data.forEach(function(data1) {
   //   data1.type = +data1.type;
@@ -47,17 +60,17 @@ d3.json("horse_data.json").then(function(data) {
 //     allbreeds.push(allbreeds);
 // }
 
-//   var allcolors = [];
-//   for (i = 0; i < colors.length; i++) {
-//     var allcolors = `${colors[i]}`;
-//     allcolors.push(allcolors);
+  // var myArray = gender;
+//   for (i = 0; i < gender.length; i++) {
+//     var allgenders = `${gender[i]}`;
+//     .push(allgenders);
 // }
 
 var data1 = [{
     type: "sunburst",
-    labels: ["Eve", "Cain", "Seth", "Enos", "Noam", "Abel", "Awan", "Enoch", "Azura"],
-    parents: ["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve" ],
-    values: [10, 14, 12, 10, 2, 6, 6, 4, 4],
+    labels: newArray3,
+    parents: newArray2,
+    // values: [10, 14, 12, 10, 2, 6, 6, 4, 4],
     outsidetextfont: {size: 20, color: "#377eb8"},
     leaf: {opacity: 0.4},
     marker: {line: {width: 2}}
