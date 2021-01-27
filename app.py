@@ -1,3 +1,5 @@
+# App.py is a Flask app that runs the application. It contains 3 routes that render index.html and provide data to JavaScript files.
+
 from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 import json
@@ -5,7 +7,6 @@ from bson import json_util, ObjectId
 from waitress import serve # production web server
 
 app = Flask(__name__)
-#app = Flask(__name__, static_url_path='static')
 
 # Use flask_pymongo to set up mongo connection
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/pet_db" # Local testing
