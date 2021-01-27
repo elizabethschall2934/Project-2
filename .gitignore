@@ -1,3 +1,15 @@
+# Geocoding API key
+/Veronica/config.py
+
+# Large files needed for testing
+/Veronica/data/Bird_data.json
+/Veronica/data/cats_data.json
+/Veronica/data/dog_data.json
+/Veronica/data/Fish_data.json
+/Veronica/data/Horse_data.json
+/Veronica/data/Rabbit_data.json
+/Veronica/data/small_data.json
+
 # Byte-compiled / optimized / DLL files
 api_keys.py
 __pycache__/
