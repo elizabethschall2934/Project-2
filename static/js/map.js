@@ -14,7 +14,7 @@ function buildPhotoArray(dataTest) {
   for (var i = 0; i < photosToCheck.length; i++) {
     // Check if a picture exists.
     if (photosToCheck[i] == undefined || photosToCheck[i].small == undefined) {
-      photos.push("../assets/pet_icons/pawIcon.png");
+      photos.push("../static/assets/pet_icons/pawIcon.png");
     }
     else {
       photos.push(photosToCheck[i].small);
@@ -25,19 +25,19 @@ function buildPhotoArray(dataTest) {
 
 // Declares function to select marker icon based on pet type
 function getIcon(animalType) {
-  return animalType == "Cat" ? "../assets/pet_icons/catIcon.png" :
-         animalType == "Dog" ? "../assets/pet_icons/dogIcon.png" :
-         animalType == "Horse" ? "../assets/pet_icons/horseIcon.png" :
-         animalType == "Rabbit" ? "../assets/pet_icons/rabbitIcon.png" :
-         animalType == "Bird" ? "../assets/pet_icons/birdIcon.png" :
-         animalType == "Small & Furry" ? "../assets/pet_icons/smallFurryIcon.png" :
-         animalType == "Scales, Fins & Other" ? "../assets/pet_icons/fishIcon.png" :
-                       "../assets/pet_icons/pawIcon.png"; // default return value
+  return animalType == "Cat" ? "../static/assets/pet_icons/catIcon.png" :
+         animalType == "Dog" ? "../static/assets/pet_icons/dogIcon.png" :
+         animalType == "Horse" ? "../static/assets/pet_icons/horseIcon.png" :
+         animalType == "Rabbit" ? "../static/assets/pet_icons/rabbitIcon.png" :
+         animalType == "Bird" ? "../static/assets/pet_icons/birdIcon.png" :
+         animalType == "Small & Furry" ? "../static/assets/pet_icons/smallFurryIcon.png" :
+         animalType == "Scales, Fins & Other" ? "../static/assets/pet_icons/fishIcon.png" :
+                       "../static/assets/pet_icons/pawIcon.png"; // default return value
 }
 
 // Reads in coordinate look-up table
-d3.json("../data/location_lookup.json").then(function(lookupTable) {
-  console.log(lookupTable)
+d3.json("/lookUpLocation").then(function(lookupTable) {
+  console.log(`lookup table: ${lookupTable}`)
 
   // Reads in data and parses arrays of interest for markers
   d3.json("/getPetData").then(function(data) {

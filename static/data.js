@@ -11,21 +11,6 @@ function displayData(data) {
                       { data: 'gender'},
                       { data: 'status'}
                   ]
-              });
-    console.log(data)
-}
-
-function createMap(data) {
-    //code here for Map
-    var dataTable = $('#table_loc').DataTable({
-        keys: true,
-        data: data,
-        columns: [
-            { data: 'street'},
-            { data: 'city'},
-            { data: 'state'},
-            { data: 'lnglat'}
-        ]
-    });
-console.log(data)
+              }); // close DataTable()
+              console.log(dataTable)
 }
