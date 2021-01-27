@@ -1,0 +1,19 @@
+
+.navbar {
+  max-height: 50px;
+  background-color: rgba(52, 105, 165, 0.75);
+  font-size: 16px; 
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+#map {
+  height: 50%;
+  padding: 20px;
+  margin: 20px;
+}
