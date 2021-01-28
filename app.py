@@ -1,34 +1,40 @@
+# App.py is a Flask app that runs the application. It contains 3 routes that render index.html and provide data to JavaScript files.
+
 from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 import json
 from bson import json_util, ObjectId
+from waitress import serve # production web server
 
 app = Flask(__name__)
 
-#Use flask_pymongo to set up mongo connection
-#app.config["MONGO_URI"] = "mongodb://localhost:27017/pet_db"
-app.config["MONGO_URI"] = "mongodb+srv://TeamCatViz:RockingTeam#1@cluster0.jityt.mongodb.net/pet_db?retryWrites=true&w=majority"
+# Use flask_pymongo to set up mongo connection
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/pet_db" # Local testing
+app.config["MONGO_URI"] = "mongodb+srv://TeamCatViz:RockingTeam#1@cluster0.jityt.mongodb.net/pet_db?retryWrites=true&w=majority" # MongoDB Cloud connection
+# Create PyMongo object
 mongo = PyMongo(app)
 
+# # Retrieve the first 100 records from the MongoDB collection for testing
+pets_coll = mongo.db.pet_data.find(limit=100)
+# # Convert PyMongo cursor to json string
+pets_json = json_util.dumps(pets_coll)
+
+# Route to render webpage
 @app.route("/")
 def index():
-    pets_coll = mongo.db.pet_data.find()
-    pets_json = json.loads(json_util.dumps(pets_coll))
-    loc_coll = mongo.db.location_data.find()
-    loc_json = json.loads(json_util.dumps(loc_coll))
-    return render_template("templates/indexE.html", pets_data=pets_json, locs_data=loc_json)
+    return render_template("index.html", pets_data=pets_json)
 
+# Route to retrieve pet data from cloud database. Called by all JavaScript files.
 @app.route("/getPetData")
 def getPetData():
-    pets_coll = mongo.db.pet_data.find()
-    pets_json = json.loads(json_util.dumps(pets_coll))
     return pets_json
 
-@app.route("/getLocationData")
-def getLocationData():
-    loc_coll = mongo.db.location_data.find()
-    loc_json = json.loads(json_util.dumps(loc_coll))
-    return loc_json
+# Route to retreive lat/long look-up table. Called by map.js.
+@app.route("/lookUpLocation")
+def lookUpLocation():
+    with open("data/location_lookup.json", "r") as file:
+        return file.read()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True) # Serve app on Flask server for local testing. Run in command line with "python app.py".
+    # serve(app) # Serve app with Waitress. Heroku will run.
