@@ -1,14 +1,15 @@
 const unique = (value, index, self) => {
-  return self.indexOf(value) === index
+    return self.indexOf(value) === index
 }
 function createMap(data) {
   console.log(data);
   //code here for Map
-  var types = ["Pets"];
+  var types = ["","","","","","","","",""];
   types = types.concat(data.map(x => x.type));
   var uniqueTypes = types.filter(unique);
   var uniqueTypes2 = data.map(x => x.type).filter(unique);
-  var breeds = data.map(x => x.breeds.primary);
+  var breeds = uniqueTypes.filter(x => x === 0 || x);
+  breeds = breeds.concat(data.map(x => x.breeds.primary));
   var species = data.map(x => x.species);
   var uniqueSpecies = species.filter(unique);
   var colors = data.map(x => x.colors.primary);
@@ -31,14 +32,15 @@ function createMap(data) {
           return 0
       }
   });
+  console.log(types);
   console.log(uniqueTypes);
-  console.log(uniqueTypes2)
+  console.log(breeds);
   
   var data1 = [{
       type: "sunburst",
-      labels: uniqueTypes2,
-      parents: uniqueTypes,
-      values: [1,1,4,4,5,5,5,8,8],
+      labels: breeds,
+      parents: types,
+      values: sizes,
       outsidetextfont: {size: 20, color: "#377eb8"},
       leaf: {opacity: 0.4},
       marker: {line: {width: 2}},
