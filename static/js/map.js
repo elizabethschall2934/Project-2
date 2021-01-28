@@ -127,7 +127,7 @@ function createMap(markerClusters) {
   // Creates the map object, centered over California on page load
   L.map("map", {
     center: [37.5, -120],
-    zoom: 7,
+    zoom: 6,
     layers: [basemap, markerClusters]
   })
 }; // Close createMap()

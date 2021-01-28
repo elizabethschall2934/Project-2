@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mission to Find Pets</title>
+  <title>Mission: Find Your Pet</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- DataTables CSS-->
@@ -26,36 +26,43 @@
   <div class="container">
 
     <div class="jumbotron text-center">
-      <h1>Mission to Find Pet</h1>
+      <h1>Mission: Find Your Pet</h1>
       <p><a class="btn btn-primary btn-lg" href="/getPetData" role="button">Get Pet Data</a></p>
     </div>
-    <div id="map">
-      <h3>All Location Data</h3>
-      <table id="table_loc" class="display">
-        <thead>
-          <th>street</th>
-          <th>city</th>
-          <th>state</th>
-          <th>lnglat</th>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
 
-    <!-- Displaying Pets Data -->
+    <!-- Displays map -->
+    <h3>Find your future furry friend at a shelter near you</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div id="map" style="height:500px">
+          <!-- Map goes here -->
+        </div>
+      </div>
+
+      <!-- Displays sunburst chart -->
+      <br>
+      <h3>Explore the species and breeds of adoptable pets</h3>
+      <p>Chart could go here?</p>
+      <div class="col-md-6">
+        <div style="height:500px">
+          <!-- Chart goes here -->
+        </div>
+      </div>
+    </div> <!-- close row -->
+
+    <!-- Displays Pets Data -->
+    <br>
     <div class="row" id="pet-mission">
       <div class="col-md-12">
-        <h3>All Pet Data</h3>
+        <h3>Search for your pet, e.g., "spotted sugar-glider".</h3>
         <table id="table_data" class="display">
           <thead>
-            <th>id</th>
             <th>Type</th>
             <th>Breed</th>
             <th>Color</th>
-            <th>age</th>
-            <th>gender</th>
-            <th>description</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Description</th>
           </thead>
           <tbody>
           </tbody>
