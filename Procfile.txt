@@ -1,0 +1,2 @@
+web: waitress-serve --port=$PORT app:app
+clock: python get_data_sched.py
