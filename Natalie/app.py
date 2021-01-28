@@ -22,7 +22,7 @@ def index():
 # Route to retrieve pet data from cloud database. Called by all JavaScript files.
 @app.route("/getPetData")
 def getPetData():
-    
+
      # # Retrieve the first 100 records from the MongoDB collection for testing
     pets_coll = mongo.db.pet_data.find(limit=100)
 # # Convert PyMongo cursor to json string
@@ -33,7 +33,8 @@ def getPetData():
 @app.route("/lookUpLocation")
 def lookUpLocation():
     with open("data/location_lookup.json", "r") as file:
-        return file.read()
 
+        return file.read()
+        
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="localhost", port=5000, debug=True)

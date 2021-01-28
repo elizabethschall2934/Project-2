@@ -20,6 +20,8 @@
     href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
   <!-- Local CSS -->
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+
 </head>
 
 <body>
@@ -45,7 +47,7 @@
        <p>Chart could go here?</p>
        <div class="col-md-6">
          <div style="height:500px">
-           <!-- Chart goes here -->
+          <div id="piechart" style="width: 900px; height: 500px;"></div>
          </div>
        </div>
      </div> <!-- close row -->
@@ -97,6 +99,8 @@
     <!-- ? -->
     <script type="text/javascript">
       data = displayData({{ pets_table| tojson}})
+
+
     </script>
     <script type="application/json" src="../data/location_lookup.json"></script>
 
