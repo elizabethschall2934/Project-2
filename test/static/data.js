@@ -3,7 +3,6 @@ function displayData(data) {
                   keys: true,
                   data: data,
                   columns: [
-                      { data: 'id'},
                       { data: 'type'},
                       { data: 'breeds.primary'},
                       { data: 'colors.primary'},
@@ -11,7 +10,6 @@ function displayData(data) {
                       { data: 'gender'},
                       { data: 'status'}
                   ]
-              });
-    console.log(data)
+              }); // close DataTable()
+              console.log(dataTable)
 }
-

@@ -6,37 +6,34 @@ from bson import json_util, ObjectId
 app = Flask(__name__)
 
 #Use flask_pymongo to set up mongo connection
-#app.config["MONGO_URI"] = "mongodb://localhost:27017/pet_db"
 app.config["MONGO_URI"] = "mongodb+srv://TeamCatViz:RockingTeam#1@cluster0.jityt.mongodb.net/pet_db?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
+# Route to render webpage
 @app.route("/")
 def index():
-    pets_coll = mongo.db.pet_data.find()
-    pets_json = json.loads(json_util.dumps(pets_coll))
-    loc_coll = mongo.db.location_data.find()
-    loc_json = json.loads(json_util.dumps(loc_coll))
-    return render_template("index.html", pets_data=pets_json, locs_data=loc_json)
+    # # Retrieve the first 100 records from the MongoDB collection for testing
+    pets_coll = mongo.db.pet_data.find(limit=100)
+# # Convert PyMongo cursor to json string
+    pets_json = json_util.dumps(pets_coll)
+    pets_table = json.loads(pets_json)
+    return render_template("index.html", pets_data=pets_json, pets_table=pets_table)
 
+# Route to retrieve pet data from cloud database. Called by all JavaScript files.
 @app.route("/getPetData")
 def getPetData():
-    # Query MongoDB for pet data
-    pets_coll = mongo.db.pet_data.find()
-    # Return json string
-    return json_util.dumps(pets_coll)
+    
+     # # Retrieve the first 100 records from the MongoDB collection for testing
+    pets_coll = mongo.db.pet_data.find(limit=100)
+# # Convert PyMongo cursor to json string
+    pets_json = json_util.dumps(pets_coll)
+    return pets_json
 
-@app.route("/getLocationData")
-def getLocationData():
-    # Query MongoDB for location lookup table
-    loc_coll = mongo.db.location_data.find()
-    # Return json string
-    return json_util.dumps(loc_coll)
-
+# Route to retreive lat/long look-up table. Called by map.js.
 @app.route("/lookUpLocation")
 def lookUpLocation():
-    with open("location_lookup.json", "r") as file:
+    with open("data/location_lookup.json", "r") as file:
         return file.read()
 
 if __name__ == "__main__":
     app.run(debug=True)
- 
