@@ -1,25 +1,65 @@
-d3.json("/getPetData").then(function(data) {
-  // Parse arrays of interest from json
-  var species = data.map(x => x.species)
+const unique = (value, index, self) => {
+    return self.indexOf(value) === index
+}
 
-  // Loops through street, city, and state arrays to concatenate and format address components into one array of addresses
-  var addresses = [];
-  for (i = 0; i < state.length; i++) {
-    var address = `${street[i]}, ${city[i]}, ${state[i]}`;
-    addresses.push(address);
-  } // closes for loop
-
-  // Passes address array to getCoordinates function to retrieve corresponding lat/longs and build locations array
-  var coordinates = [];
-  for (i = 0; i < addresses.length; i++) {
-    try {
-      var lat = lookupTable[addresses[i]][0];
-      var lon = lookupTable[addresses[i]][1];
-      //Appends lat and long to coordinates array
-      var coordinatePair = [lat, lon];
-      coordinates.push(coordinatePair);
-    }
-    catch (err) { }
+function createMap(data) {
+  console.log(data);
+  //code here for Map
+  //var types = ["","","","","","","",""];
+  var types = data.map(x => x.type);
+  var uniqueTypes = types.filter(unique);
+  var types_pre = [];
+  for (i=0; i < uniqueTypes.length; i++) {
+    types_pre = types_pre.concat("");
   }
+  types = types_pre.concat(types);
+  var breeds = uniqueTypes.concat(data.map(x => x.breeds.primary));
+ /*  var sizes = data.map(x => {
+      if (x.size=="Small") {
+          return 1
+      }
+      else if (x.size=="Medium") {
+          return 2
+      }
+      else if (x.size=="Large") {
+          return 3
+      }
+      else if (x.size=="Extra Large") {
+          return 4
+      }
+      else {
+          return 0
+      }
+  }); */
+  console.log(types);
+  console.log(breeds);
+  
+  var data1 = [{
+      type: "sunburst",
+      //maxdepth: -1,
+      labels: breeds,
+      parents: types,
+      count: "branches+leaves",
+      //level: "",
+      //values: sizes,
+      //branchvalues: "total",
+      //outsidetextfont: {size: 20, color: "#377eb8"},
+      //leaf: {opacity: 0.4},
+      marker: {line: {width: 0}},
+      //textposition: 'inside',
+      //insidetextorientation: 'radial'
+  }];
 
-  createMarkers();
+  var layout = {
+      margin: {l: 0, r: 0, b: 0, t: 0},
+      /* sunburstcolorway:[
+        "#636efa","#EF553B","#00cc96","#ab63fa","#19d3f3",
+        "#e763fa", "#FECB52","#FFA15A","#FF6692","#B6E880"
+      ],
+      extendsunburstcolorway: true */
+      /* width: 500,
+      height: 500 */
+  };
+
+  Plotly.newPlot('map', data1, layout, {showSendToCloud: true});
+}
