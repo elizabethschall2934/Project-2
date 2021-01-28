@@ -78,11 +78,12 @@ d3.json("/lookUpLocation").then(function(lookupTable) {
       var markerClusters = L.markerClusterGroup();
 
       // Loops through data arrays
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < coordinates.length; i++) {
         // Declares string variable to hold icon URLs
         var iconURL = "";
         // Extracts attributes needed to define markers
         var lat = coordinates[i][1];
+        console.log(lat)
         var lon = coordinates[i][0];
         var type = types[i];
         var name = names[i];
