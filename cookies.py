@@ -14,13 +14,15 @@ cookies = {
     'ly_segs': '^%^7B^%^22pjr_unknown_visitors^%^22^%^3A^%^22pjr_unknown_visitors^%^22^%^2C^%^22pfee2^%^22^%^3A^%^22pfee2^%^22^%^2C^%^22pf1^%^22^%^3A^%^22pf1^%^22^%^2C^%^22pf3^%^22^%^3A^%^22pf3^%^22^%^2C^%^22default_anon_seg^%^22^%^3A^%^22default_anon_seg^%^22^%^2C^%^22vet_hydracare_utmtraffic^%^22^%^3A^%^22vet_hydracare_utmtraffic^%^22^%^2C^%^22pus_leadgenmodal_eligible^%^22^%^3A^%^22pus_leadgenmodal_eligible^%^22^%^2C^%^22ar_banner^%^22^%^3A^%^22ar_banner^%^22^%^2C^%^22ly_deeply_engaged_users^%^22^%^3A^%^22ly_deeply_engaged_users^%^22^%^2C^%^22ly_us_visitor^%^22^%^3A^%^22ly_us_visitor^%^22^%^2C^%^22ly_unlikely_to_reengage^%^22^%^3A^%^22ly_unlikely_to_reengage^%^22^%^2C^%^22ly_reporting_frequent_users^%^22^%^3A^%^22ly_reporting_frequent_users^%^22^%^2C^%^22ly_unknown_email^%^22^%^3A^%^22ly_unknown_email^%^22^%^2C^%^22smt_power^%^22^%^3A^%^22smt_power^%^22^%^2C^%^22ly_uses_desktop^%^22^%^3A^%^22ly_uses_desktop^%^22^%^2C^%^22ly_frequent_user^%^22^%^3A^%^22ly_frequent_user^%^22^%^2C^%^22all^%^22^%^3A^%^22all^%^22^%^2C^%^22ly_reporting_unlikely_to_reengage^%^22^%^3A^%^22ly_reporting_unlikely_to_reengage^%^22^%^2C^%^22ly_reporting_last_visit_within_day^%^22^%^3A^%^22ly_reporting_last_visit_within_day^%^22^%^2C^%^22ly_reporting_deeply_engaged_users^%^22^%^3A^%^22ly_reporting_deeply_engaged_users^%^22^%^2C^%^22ly_reporting_last_visit_within_month^%^22^%^3A^%^22ly_reporting_last_visit_within_month^%^22^%^2C^%^22ly_reporting_multi_session_visitor^%^22^%^3A^%^22ly_reporting_multi_session_visitor^%^22^%^2C^%^22ly_reporting_has_visited_web^%^22^%^3A^%^22ly_reporting_has_visited_web^%^22^%^2C^%^22ly_deep_engager^%^22^%^3A^%^22ly_deep_engager^%^22^%^2C^%^22ly_reporting_last_visit_within_week^%^22^%^3A^%^22ly_reporting_last_visit_within_week^%^22^%^2C^%^22ly_repeat_visitor^%^22^%^3A^%^22ly_repeat_visitor^%^22^%^2C^%^22ly_reporting_last_visit_within_3_months^%^22^%^3A^%^22ly_reporting_last_visit_within_3_months^%^22^%^7D',
     'recently_viewed_pets': '^%^5B50195777^%^2C50290629^%^5D',
     'dya_hellobar_closed': '^{^%^22active^%^22:false^%^2C^%^22showHelloBar^%^22:true^}',
-    'ga_vid_gid': 'GA1.2.822824326.1611426548',
-    '_gid': 'GA1.2.352509915.1611426561',
-    'seerses': 'e',
-    'sc.ASP.NET_SESSIONID': 'xaashqaavvg12skh5caeraqd',
-    'PFSESSION': '62f266b579e37908d4e5db38657a493e',
-    'impressions': '2',
     'IDR_ProfilesID': '27ea6ebe-5842-11eb-b47f-22000a3fdfa4',
+    'ga_vid_gid': 'GA1.2.823152696.1611799966',
+    'seerses': 'e',
+    '_gat_UA-6568435-1': '1',
+    '_gid': 'GA1.2.1233951020.1611799966',
+    '_gat_UA-27534376-1': '1',
+    'sc.ASP.NET_SESSIONID': '2eji2ieqyt51lzfgo1ng55xz',
+    'PFSESSION': 'fbf87d1b3876d039e8db4a05bd9e19c0',
+    'impressions': '2',
 }
 
 headers = {

@@ -4,8 +4,8 @@ import requests
 import re
 import petpy
 import json
+import pymongo
 
-session = requests.Session()
 response = requests.get('https://www.petfinder.com/user/developer-settings/', headers=headers, cookies=cookies)
 
 soup = BeautifulSoup(response.text, 'html.parser')
@@ -26,7 +26,7 @@ else:
         if animal['contact']['address']['state'] == "CA" and (animal not in animal_list):
             animal_list.append(animal)
 
-ca_animals = {'animals': animal_list}
 
-##Change this output path to MongoDB in the future.
-json.dump(ca_animals, open("ca_data_0123.json", "w+"))
+    client = pymongo.MongoClient("mongodb+srv://TeamCatViz:RockingTeam#1@cluster0.jityt.mongodb.net/pet_db?retryWrites=true&w=majority")
+    client.pet_db.pet_data.delete_many({})
+    client.pet_db.pet_data.insert_many(animal_list)
