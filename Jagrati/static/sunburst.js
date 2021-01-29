@@ -1,20 +1,20 @@
 const unique = (value, index, self) => {
-  return self.indexOf(value) === index
+    return self.indexOf(value) === index
 }
+
 function createMap(data) {
   console.log(data);
   //code here for Map
-  var types = ["Pets"];
-  types = types.concat(data.map(x => x.type));
+  //var types = ["","","","","","","",""];
+  var types = data.map(x => x.type);
   var uniqueTypes = types.filter(unique);
-  var uniqueTypes2 = data.map(x => x.type).filter(unique);
-  var breeds = data.map(x => x.breeds.primary);
-  var species = data.map(x => x.species);
-  var uniqueSpecies = species.filter(unique);
-  var colors = data.map(x => x.colors.primary);
-  var age = data.map(x => x.age);
-  var gender = data.map(x => x.gender);
-  var sizes = data.map(x => {
+  var types_pre = [];
+  for (i=0; i < uniqueTypes.length; i++) {
+    types_pre = types_pre.concat("");
+  }
+  types = types_pre.concat(types);
+  var breeds = uniqueTypes.concat(data.map(x => x.breeds.primary));
+ /*  var sizes = data.map(x => {
       if (x.size=="Small") {
           return 1
       }
@@ -30,25 +30,36 @@ function createMap(data) {
       else {
           return 0
       }
-  });
-  console.log(uniqueTypes);
-  console.log(uniqueTypes2)
+  }); */
+  console.log(types);
+  console.log(breeds);
   
   var data1 = [{
       type: "sunburst",
-      labels: uniqueTypes2,
-      parents: uniqueTypes,
-      values: [1,1,4,4,5,5,5,8,8],
-      outsidetextfont: {size: 20, color: "#377eb8"},
-      leaf: {opacity: 0.4},
-      marker: {line: {width: 2}},
+      //maxdepth: -1,
+      labels: breeds,
+      parents: types,
+      count: "branches+leaves",
+      //level: "",
+      //values: sizes,
+      //branchvalues: "total",
+      //outsidetextfont: {size: 20, color: "#377eb8"},
+      //leaf: {opacity: 0.4},
+      marker: {line: {width: 0}},
+      //textposition: 'inside',
+      //insidetextorientation: 'radial'
   }];
 
   var layout = {
       margin: {l: 0, r: 0, b: 0, t: 0},
-      width: 500,
-      height: 500
+      sunburstcolorway:[
+        "#636efa","#EF553B","#00cc96","#ab63fa","#19d3f3",
+        "#e763fa", "#FECB52","#FFA15A","#FF6692","#B6E880"
+      ],
+      extendsunburstcolorway: true
+      /* width: 500,
+      height: 500 */
   };
 
-  Plotly.newPlot('map', data1, layout);
+  Plotly.newPlot('map', data1, layout, {showSendToCloud: true});
 }
