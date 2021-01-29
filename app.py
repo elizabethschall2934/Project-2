@@ -12,11 +12,9 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    pets_coll = mongo.db.pet_data.find()
+    pets_coll = mongo.db.pet_data.find().limit(100)
     pets_json = json.loads(json_util.dumps(pets_coll))
-    loc_coll = mongo.db.location_data.find()
-    loc_json = json.loads(json_util.dumps(loc_coll))
-    return render_template("index.html", pets_data=pets_json, locs_data=loc_json)
+    return render_template("index.html", pets_data=pets_json)
 
 @app.route("/getPetData")
 def getPetData():
