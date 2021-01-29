@@ -1,9 +1,7 @@
-
 // * * *
 // Map.js builds the map displayed by index.html. 
 // 
 // *
-
 // Declares a function to loop through photo data for each pet to check that at least one photo is available and insert that photo into an array.
 // If no photo is available, a paw icon is inserted as a place-holder that will appear in the map pop-up.
 function buildPhotoArray(dataTest) {
@@ -12,15 +10,17 @@ function buildPhotoArray(dataTest) {
   var photosToCheck = dataTest.map(x => x.photos);
 
   for (var i = 0; i < photosToCheck.length; i++) {
-    // Check if a picture exists.
-    if (photosToCheck[i] == undefined || photosToCheck[i].small == undefined) {
-      photos.push("../static/assets/pet_icons/pawIcon.png");
+    // Check if a small photo exists.
+    if (photosToCheck[i][0] != undefined && photosToCheck[i][0].medium != undefined) {
+      photos.push(photosToCheck[i][0].medium);
     }
+    // If no small photo is available, show the paw icon.
     else {
-      photos.push(photosToCheck[i].small);
+      photos.push("../static/assets/pet_icons/pawIcon.png");
     }
   } // close for loop
   return photos;
+
 } // close function declaration
 
 // Declares function to select marker icon based on pet type
@@ -37,7 +37,6 @@ function getIcon(animalType) {
 
 // Reads in coordinate look-up table
 d3.json("/lookUpLocation").then(function(lookupTable) {
-  console.log(`lookup table: ${lookupTable}`)
 
   // Reads in data and parses arrays of interest for markers
   d3.json("/getPetData").then(function(data) {
@@ -78,11 +77,12 @@ d3.json("/lookUpLocation").then(function(lookupTable) {
       var markerClusters = L.markerClusterGroup();
 
       // Loops through data arrays
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < coordinates.length; i++) {
         // Declares string variable to hold icon URLs
         var iconURL = "";
         // Extracts attributes needed to define markers
         var lat = coordinates[i][1];
+        console.log(lat)
         var lon = coordinates[i][0];
         var type = types[i];
         var name = names[i];

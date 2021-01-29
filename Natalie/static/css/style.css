@@ -6,12 +6,20 @@ body {
   background-size: cover;
 }
 
+
 .h3 {
   background-color: white;
 }
 
 .header {
-  background-color: white;
+  font-family: Verdana;
+  font-size: 100px;
+  padding: 60px;
+  text-align: left;
+  text-indent: 10px;
+  background: cornflowerblue;
+  color: white;
+  font-size: 30px;
 }
 
 .container {

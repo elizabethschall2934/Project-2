@@ -12,12 +12,11 @@ mongo = PyMongo(app)
 # Route to render webpage
 @app.route("/")
 def index():
-    # # Retrieve the first 100 records from the MongoDB collection for testing
+    # # Retrieve the first 100 records from the MongoDB collection for testing (limit 100 set for quick demo)
     pets_coll = mongo.db.pet_data.find(limit=100)
 # # Convert PyMongo cursor to json string
-    pets_json = json_util.dumps(pets_coll)
-    pets_table = json.loads(pets_json)
-    return render_template("index.html", pets_data=pets_json, pets_table=pets_table)
+    pets_json = json.loads(json_util.dumps(pets_coll))
+    return render_template("index.html", pets_data=pets_json)
 
 # Route to retrieve pet data from cloud database. Called by all JavaScript files.
 @app.route("/getPetData")
