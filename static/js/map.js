@@ -1,4 +1,3 @@
-
 // * * *
 // Map.js builds the map displayed by index.html. 
 // 

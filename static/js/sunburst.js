@@ -1,51 +1,65 @@
-d3.json("/getPetData").then(function(data) {
-  console.log("Starts d3.json")
-  var types = data.map(x => x.type)
-  var breeds = data.map(x =>x.breeds.primary)
-  var species = data.map(x => x.species);
-  var colors = data.map(x => x.colors.primary);
-  var age = data.map(x => x.age);
-  var gender = data.map(x => x.gender);
+const unique = (value, index, self) => {
+    return self.indexOf(value) === index
+}
+
+function createMap(data) {
+  console.log(data);
+  //code here for Map
+  //var types = ["","","","","","","",""];
+  var types = data.map(x => x.type);
+  var uniqueTypes = types.filter(unique);
+  var types_pre = [];
+  for (i=0; i < uniqueTypes.length; i++) {
+    types_pre = types_pre.concat("");
+  }
+  types = types_pre.concat(types);
+  var breeds = uniqueTypes.concat(data.map(x => x.breeds.primary));
+ /*  var sizes = data.map(x => {
+      if (x.size=="Small") {
+          return 1
+      }
+      else if (x.size=="Medium") {
+          return 2
+      }
+      else if (x.size=="Large") {
+          return 3
+      }
+      else if (x.size=="Extra Large") {
+          return 4
+      }
+      else {
+          return 0
+      }
+  }); */
+  console.log(types);
+  console.log(breeds);
   
-  var allspecies = [];
-  for (i = 0; i < species.length; i++) {
-    var aspecies = `${species[i]}`;
-    allspecies.push(aspecies);
+  var data1 = [{
+      type: "sunburst",
+      //maxdepth: -1,
+      labels: breeds,
+      parents: types,
+      count: "branches+leaves",
+      //level: "",
+      //values: sizes,
+      //branchvalues: "total",
+      //outsidetextfont: {size: 20, color: "#377eb8"},
+      //leaf: {opacity: 0.4},
+      marker: {line: {width: 0}},
+      //textposition: 'inside',
+      //insidetextorientation: 'radial'
+  }];
+
+  var layout = {
+      margin: {l: 0, r: 0, b: 0, t: 0},
+      /* sunburstcolorway:[
+        "#636efa","#EF553B","#00cc96","#ab63fa","#19d3f3",
+        "#e763fa", "#FECB52","#FFA15A","#FF6692","#B6E880"
+      ],
+      extendsunburstcolorway: true */
+      /* width: 500,
+      height: 500 */
+  };
+
+  Plotly.newPlot('map', data1, layout, {showSendToCloud: true});
 }
-
-  var alltypes = [];
-  for (i = 0; i < types.length; i++) {
-    var atype = `${types[i]}`;
-    alltypes.push(atype);
-}
-
-  var allbreeds = [];
-  for (i = 0; i < breeds.length; i++) {
-    var abreed = `${breeds[i]}`;
-    allbreeds.push(abreed);
-}
-
-  var allcolors = [];
-  for (i = 0; i < colors.length; i++) {
-    var acolor = `${colors[i]}`;
-    allcolors.push(acolor);
-}
-
-var data1 = [{
-    type: "sunburst",
-    labels: [atype],
-    parents: [abreed],
-    values: [acolor],
-    outsidetextfont: {size: 20, color: "#377eb8"},
-    leaf: {opacity: 0.4},
-    marker: {line: {width: 2}},
-}];
-
-var layout = {
-    margin: {l: 0, r: 0, b: 0, t: 0},
-    width: 500,
-    height: 500
-};
-
-Plotly.newPlot('myDiv', data1, layout);
-}) 
